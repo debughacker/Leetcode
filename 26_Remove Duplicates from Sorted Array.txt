@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int preNum;
+        int count=0;
+        for(auto iter=nums.begin();iter!=nums.end();){
+            if(iter==nums.begin()||*iter!=preNum){
+                preNum=*iter;
+                count++;
+                iter++;
+            }
+            else
+                iter=nums.erase(iter);
+        }
+        return count;
+    }
+};

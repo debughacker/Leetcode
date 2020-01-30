@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> stk;
+        unordered_map<char,char> match{{')','('},{']','['},{'}','{'}};
+        for(auto c:s){
+            if(c=='{'||c=='('||c=='[')
+                stk.push(c);
+            else{
+                if(stk.empty()||stk.top()!=match[c])
+                    return false;
+                else
+                    stk.pop();
+            }
+        }
+        if(stk.empty())
+            return true;
+        else
+            return false;
+    }
+};
